@@ -1,4 +1,3 @@
-import sum from './sum';
-import './image-viewer';
-const total=sum(10,5);
-console.log(total)
+import sumTest from './sum';
+
+console.log(new sumTest('panner'))

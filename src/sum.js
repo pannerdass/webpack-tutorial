@@ -1,3 +1,8 @@
-const sum=(a,b)=>a+b;
+export default class sumTest{
 
-export default sum;
+   constructor(name){
+    console.log(name);
+   }
+
+
+}

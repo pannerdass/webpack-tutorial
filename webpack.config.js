@@ -1,7 +1,8 @@
 const path=require('path');
+const ExtractTextPlugin=require('extract-text-webpack-plugin')
 const config={
 
-entry:'./src/index.js',
+entry:'./src/sum.js',
 
 output:{
     path:path.resolve(__dirname,'build'),
@@ -12,12 +13,28 @@ module:{
         {use:'babel-loader',
         test:/\.js$/
     },{
-        use:['style-loader','css-loader'],
+      
+      loader:ExtractTextPlugin.extract({
+loader:'css-loader'
+      }),
+        //  use:['style-loader','css-loader'],
         test:/\.css$/
+    },{
+        test:/\.(jpe?g|png|gif|svg)$/,
+        use:[
+          
+          {
+loader:'url-loader',
+options:{limit:40000}
+          },
+            
+            'image-webpack-loader'
+        ]
     }
 
     ]
-}
+},
+plugins:[ new ExtractTextPlugin('style.css')]
 
 
 }
